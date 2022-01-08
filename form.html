@@ -21,6 +21,7 @@
         <div>
             <label for="pwd">password input type: </label>
             <input type="password" id="pwd" name="pwd">
+            <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">email input type: </label>
@@ -84,16 +85,26 @@
         });
 
         const phone = document.querySelector('#tel');
-        const errorTel = document.querySelector('.tel-error');
+        const telError = document.querySelector('.tel-error');
         phone.addEventListener('input', function() {
             let phoneRegex = RegExp('^[+][0-9]{1,2}?[\\s,-][7-9]{1}[0-9]{9}$');
             if (phoneRegex.test(phone.value)) {
-                errorTel.textContent = "";
+                telError.textContent = "";
             } else {
-                errorTel.textContent = "Phone number is incorrect";
+                telError.textContent = "Phone number is incorrect";
             }
         });
 
+        const password = document.querySelector("#pwd");
+        const pwdError = document.querySelector(".pwd-error");
+        password.addEventListener('input', function() {
+            let passRegex = RegExp("^[A-Za-z]{8,}$");
+            if (passRegex.test(password.value)) {
+                pwdError.textContent = "";
+            } else {
+                pwdError.textContent = "Password is incorrect";
+            }
+        });
 
         const salary = document.querySelector('#salary');
         const output = document.querySelector('.salary-output');
